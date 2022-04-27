@@ -1,0 +1,63 @@
+{
+	"name": "build",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": "rose-pine/build",
+	"funding": "https://github.com/sponsors/mvllow",
+	"author": {
+		"name": "mvllow",
+		"email": "mvllow@icloud.com"
+	},
+	"type": "module",
+	"exports": "./dist/index.js",
+	"bin": "dist/cli.js",
+	"engines": {
+		"node": ">=12"
+	},
+	"scripts": {
+		"build": "del-cli dist && tsc && npm test",
+		"test": "del-cli test/mock/dist && xo && ava",
+		"release": "np",
+		"version": "npm run build"
+	},
+	"files": [
+		"dist"
+	],
+	"types": "dist",
+	"keywords": [
+		"build"
+	],
+	"dependencies": {
+		"@rose-pine/palette": "^2.1.0",
+		"meow": "^10.1.2"
+	},
+	"devDependencies": {
+		"@mvllow/tsconfig": "^0.1.0",
+		"@types/node": "^17.0.24",
+		"ava": "^4.2.0",
+		"del-cli": "^4.0.1",
+		"np": "^7.6.1",
+		"prettier": "^2.6.2",
+		"ts-node": "^10.7.0",
+		"typescript": "^4.6.3",
+		"xo": "^0.48.0"
+	},
+	"prettier": {
+		"bracketSpacing": false,
+		"semi": false,
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"useTabs": true
+	},
+	"xo": {
+		"prettier": true
+	},
+	"ava": {
+		"extensions": {
+			"ts": "module"
+		},
+		"nodeArguments": [
+			"--loader=ts-node/esm"
+		]
+	}
+}
