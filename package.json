@@ -12,7 +12,7 @@
 	"exports": "./dist/index.js",
 	"bin": "dist/cli.js",
 	"engines": {
-		"node": ">=12"
+		"node": ">=16.4"
 	},
 	"scripts": {
 		"build": "del-cli dist && tsc && npm test",
