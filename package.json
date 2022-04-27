@@ -1,5 +1,5 @@
 {
-	"name": "build",
+	"name": "@rose-pine/build",
 	"version": "0.0.0",
 	"license": "MIT",
 	"repository": "rose-pine/build",
