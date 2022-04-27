@@ -55,3 +55,21 @@ $ npx @rose-pine/build --help
 
 **hsl-function**\
 `rgb(2, 55%, 83%)`
+
+## Variables
+
+> By default, variables are prefixed with `$`
+
+All values from [@rose-pine/palette](https://github.com/rose-pine/palette) are available as well as the following:
+
+**id**\
+rose-pine | rose-pine-moon | rose-pine-dawn
+
+**name**\
+Rosé Pine | Rosé Pine Moon | Rosé Pine Dawn
+
+**description**\
+All natural pine, faux fur and a bit of soho vibes for the classy minimalist
+
+**type**\
+dark | dark | light

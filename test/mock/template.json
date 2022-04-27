@@ -1,3 +1,8 @@
 {
-	"something": "$base"
+	"id": "$id",
+	"name": "$name",
+	"description": "$description",
+	"type": "$type",
+	"foreground": "$text",
+	"background": "$base"
 }
