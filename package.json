@@ -27,6 +27,9 @@
 	"keywords": [
 		"build"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"@rose-pine/palette": "^2.1.0",
 		"meow": "^10.1.2"
