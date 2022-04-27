@@ -1,6 +1,7 @@
 {
 	"name": "@rose-pine/build",
 	"version": "0.0.0",
+	"description": "Theme generator for Rosé Pine",
 	"license": "MIT",
 	"repository": "rose-pine/build",
 	"funding": "https://github.com/sponsors/mvllow",

@@ -1,6 +1,6 @@
 # @rose-pine/build
 
-> Rosé Pine theme generator
+> Theme generator for Rosé Pine
 
 ## Usage
 
