@@ -8,8 +8,10 @@ export const build = async (flags?: UserOptions) => {
 
 	generateVariants(config)
 
-	const version = getPackageVersion()
-	updateReadmeVersion(version)
+	if (!config.__skipReadmeVersion) {
+		const version = getPackageVersion()
+		updateReadmeVersion(version)
+	}
 }
 
 export default build

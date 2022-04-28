@@ -1,6 +1,7 @@
 import process from 'node:process'
 
 export interface Config {
+	__skipReadmeVersion: boolean
 	template: string
 	output: string
 	prefix: string
@@ -22,6 +23,7 @@ export type UserOptions = Partial<Config>
 
 export const resolveConfig = (flags?: UserOptions) => {
 	const defaultConfig: Config = {
+		__skipReadmeVersion: false,
 		template: process.cwd() + '/source/template.json',
 		output: process.cwd() + '/dist',
 		prefix: '$',

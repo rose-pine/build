@@ -11,6 +11,7 @@ const readFile = (file: string, ext: string) =>
 
 test('json template', async (t) => {
 	await build({
+		__skipReadmeVersion: true,
 		template: mockDir + '/template.json',
 		output: mockDir + '/dist',
 	})
@@ -59,6 +60,7 @@ test('json template', async (t) => {
 
 test('txt template', async (t) => {
 	await build({
+		__skipReadmeVersion: true,
 		template: mockDir + '/template.txt',
 		output: mockDir + '/dist',
 	})
