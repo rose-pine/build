@@ -1,14 +1,15 @@
 import fs from 'node:fs'
 import process from 'node:process'
 import test from 'ava'
-import build, {formatColor} from '../source/index.js'
+import build from '../source/index.js'
+import {formatColor} from '../source/utils/format-color.js'
 
 const mockDir = process.cwd() + '/test/mock'
 
 const readFile = (file: string, ext: string) =>
 	fs.readFileSync(`${mockDir}/dist/${file}.${ext}`, 'utf8')
 
-test('variable builtins', async (t) => {
+test('json template', async (t) => {
 	await build({
 		template: mockDir + '/template.json',
 		output: mockDir + '/dist',
@@ -71,7 +72,7 @@ test('txt template', async (t) => {
 	t.is(dawn, 'Rosé Pine Dawn can also be pronounced #d7827e #286983')
 })
 
-test('all formats', (t) => {
+test('format color', (t) => {
 	const testColor = {
 		hex: '#ebbcba',
 		rgb: 'rgb(235, 188, 186)',
