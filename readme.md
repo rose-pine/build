@@ -84,3 +84,6 @@ All values from [@rose-pine/palette](https://github.com/rose-pine/palette) are a
 
 **type**\
 `dark | dark | light`
+
+**highlight{Low,Med,High}Alpha**\
+Highlight color with transparency, e.g. `#d4ccff36` or `rgba(212, 204, 255, 0.21)`

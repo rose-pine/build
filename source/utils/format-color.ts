@@ -11,19 +11,33 @@ export const formatColor = (
 	const formats = {
 		hex: workingColor.hex,
 		'hex-ns': workingColor.hex.replace('#', ''),
-		rgb: workingColor.rgb.replace('rgb(', '').replace(')', ''),
+		rgb: workingColor.rgb
+			.replace('rgb(', '')
+			.replace('rgba(', '')
+			.replace(')', ''),
 		'rgb-ns': workingColor.rgb
 			.replace('rgb(', '')
+			.replace('rgba(', '')
 			.replace(')', '')
 			.replaceAll(',', ''),
-		'rgb-array': workingColor.rgb.replace('rgb(', '[').replace(')', ']'),
+		'rgb-array': workingColor.rgb
+			.replace('rgb(', '[')
+			.replace('rgba(', '[')
+			.replace(')', ']'),
 		'rgb-function': workingColor.rgb,
-		hsl: workingColor.hsl.replace('hsl(', '').replace(')', ''),
+		hsl: workingColor.hsl
+			.replace('hsl(', '')
+			.replace('hsla(', '')
+			.replace(')', ''),
 		'hsl-ns': workingColor.hsl
 			.replace('hsl(', '')
+			.replace('hsla(', '')
 			.replace(')', '')
 			.replaceAll(',', ''),
-		'hsl-array': workingColor.hsl.replace('hsl(', '[').replace(')', ']'),
+		'hsl-array': workingColor.hsl
+			.replace('hsl(', '[')
+			.replace('hsla(', '[')
+			.replace(')', ']'),
 		'hsl-function': workingColor.hsl,
 	}
 

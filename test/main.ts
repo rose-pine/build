@@ -29,6 +29,8 @@ test('json template', async (t) => {
 			'All natural pine, faux fur and a bit of soho vibes for the classy minimalist'
 		)
 		t.is(main['type'], 'dark')
+		t.is(main['selection'], '#403d52')
+		t.is(main['selectionAlpha'], '#6e6a8633')
 		t.is(main['foreground'], '#e0def4')
 		t.is(main['background'], '#191724')
 	}
@@ -41,6 +43,8 @@ test('json template', async (t) => {
 			'All natural pine, faux fur and a bit of soho vibes for the classy minimalist'
 		)
 		t.is(moon['type'], 'dark')
+		t.is(moon['selection'], '#44415a')
+		t.is(moon['selectionAlpha'], '#817c9c26')
 		t.is(moon['foreground'], '#e0def4')
 		t.is(moon['background'], '#232136')
 	}
@@ -53,12 +57,14 @@ test('json template', async (t) => {
 			'All natural pine, faux fur and a bit of soho vibes for the classy minimalist'
 		)
 		t.is(dawn['type'], 'light')
+		t.is(dawn['selection'], '#dfdad9')
+		t.is(dawn['selectionAlpha'], '#6e6a8614')
 		t.is(dawn['foreground'], '#575279')
 		t.is(dawn['background'], '#faf4ed')
 	}
 })
 
-test('txt template', async (t) => {
+test('txt template hex', async (t) => {
 	await build({
 		__skipReadmeVersion: true,
 		template: mockDir + '/template.txt',

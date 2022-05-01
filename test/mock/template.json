@@ -3,6 +3,8 @@
 	"name": "$name",
 	"description": "$description",
 	"type": "$type",
+	"selection": "$highlightMed",
+	"selectionAlpha": "$highlightMedAlpha",
 	"foreground": "$text",
 	"background": "$base"
 }

@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import {roles, variants, type Color} from '@rose-pine/palette'
+import {roles, variants, type Color, type AlphaColor} from '@rose-pine/palette'
 import {type Config} from '../config.js'
 import {formatColor} from './format-color.js'
 
@@ -23,10 +23,19 @@ export const generateVariants = (config: Config) => {
 
 		for (const role of Object.keys(roles)) {
 			// @ts-expect-error role cannot be used to index
-			const currentColor = roles[role][variant] as Color
-			const color = formatColor(currentColor, config.format, config.stripSpaces)
+			const currentColor = roles[role][variant] as Color | AlphaColor
 
-			result = result.replaceAll(`${config.prefix}${role}`, color)
+			if ('alpha' in currentColor) {
+				result = result.replaceAll(
+					`${config.prefix}${role}Alpha`,
+					formatColor(currentColor.alpha, config.format, config.stripSpaces)
+				)
+			}
+
+			result = result.replaceAll(
+				`${config.prefix}${role}`,
+				formatColor(currentColor, config.format, config.stripSpaces)
+			)
 		}
 
 		result = result.replaceAll(`${config.prefix}id`, id)
