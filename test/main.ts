@@ -70,3 +70,20 @@ test('txt template with hex values', async (t) => {
 	t.is(moon, 'Rosé Pine Moon can also be pronounced #ea9a97 #3e8fb0')
 	t.is(dawn, 'Rosé Pine Dawn can also be pronounced #d7827e #286983')
 })
+
+test('yml template with rgb values', async (t) => {
+	await build({
+		__skipReadmeVersion: true,
+		template: mockDir + '/template.txt',
+		output: mockDir + '/dist',
+		format: 'hex',
+	})
+
+	const [main, moon, dawn] = ['', '-moon', '-dawn'].map((v) =>
+		readFile(`rose-pine${v}`, 'yml').trim()
+	)
+
+	t.is(main, "active: 'rgb()' # or rgba()")
+	t.is(moon, "active: 'rgb()' # or rgba()")
+	t.is(dawn, "active: 'rgb()' # or rgba()")
+})
