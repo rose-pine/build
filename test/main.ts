@@ -9,6 +9,12 @@ const mockDir = process.cwd() + '/test/mock'
 const readFile = (file: string, ext: string) =>
 	fs.readFileSync(`${mockDir}/dist/${file}.${ext}`, 'utf8')
 
+test.after(() => {
+	try {
+		fs.rmSync(mockDir + '/dist', {recursive: true})
+	} catch {}
+})
+
 test('json template with hex values', async (t) => {
 	await build({
 		__skipReadmeVersion: true,
