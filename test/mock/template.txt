@@ -1,1 +1,1 @@
-$name can also be pronounced $rose $pine
+$name is our $(dark variant|not as dark variant|light variant)

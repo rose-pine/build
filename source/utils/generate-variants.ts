@@ -8,7 +8,7 @@ export const generateVariants = (config: Config) => {
 	const template = fs.readFileSync(config.template, 'utf8').toString()
 	const extension = path.extname(config.template)
 
-	for (const variant of Object.keys(variants)) {
+	for (const [i, variant] of Object.keys(variants).entries()) {
 		const id = `rose-pine${variant === 'main' ? '' : `-${variant}`}`
 		const name = `Rosé Pine${
 			variant === 'main'
@@ -26,22 +26,28 @@ export const generateVariants = (config: Config) => {
 			const currentColor = roles[role][variant] as Color | AlphaColor
 
 			if ('alpha' in currentColor) {
+				// Replace alpha colors
 				result = result.replaceAll(
 					`${config.prefix}${role}Alpha`,
 					formatColor(currentColor.alpha, config.format, config.stripSpaces)
 				)
 			}
 
+			// Replace colors
 			result = result.replaceAll(
 				`${config.prefix}${role}`,
 				formatColor(currentColor, config.format, config.stripSpaces)
 			)
 		}
 
+		// Replace built-in values
 		result = result.replaceAll(`${config.prefix}id`, id)
 		result = result.replaceAll(`${config.prefix}name`, name)
 		result = result.replaceAll(`${config.prefix}description`, description)
 		result = result.replaceAll(`${config.prefix}type`, type)
+
+		// Replace custom values
+		result = result.replaceAll(/\$\((.*?)\|(.*?)\|(.*?)\)/gm, `$${i + 1}`)
 
 		fs.mkdirSync(config.output, {recursive: true})
 		fs.writeFileSync(`${config.output}/${id}${extension}`, result, 'utf8')

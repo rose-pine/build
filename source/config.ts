@@ -1,5 +1,14 @@
 import process from 'node:process'
 
+export type CustomValues = Record<
+	string,
+	{
+		main?: string
+		moon?: string
+		dawn?: string
+	}
+>
+
 export interface Config {
 	__skipReadmeVersion: boolean
 	template: string

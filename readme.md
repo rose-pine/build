@@ -87,3 +87,30 @@ All values from [@rose-pine/palette](https://github.com/rose-pine/palette) are a
 
 **highlight{Low,Med,High}Alpha**\
 Highlight color with transparency, e.g. `#d4ccff36` or `rgba(212, 204, 255, 0.21)`
+
+## Custom values
+
+> Use a unique value per variant
+
+**template**
+
+```jsonc
+{
+	"order": "$(Caffè|Cappuccino|Marocchino)"
+}
+```
+
+**output**
+
+```jsonc
+{
+	// rose-pine.json
+	"order": "Caffè"
+
+	// rose-pine-moon.json
+	"order": "Cappuccino"
+
+	// rose-pine-dawn.json
+	"order": "Marocchino"
+}
+```

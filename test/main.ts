@@ -106,19 +106,18 @@ test('json template with hex values', async (t) => {
 	})
 })
 
-test('txt template with hex values', async (t) => {
+test('txt template with variant-unique values', async (t) => {
 	await build({
 		__skipReadmeVersion: true,
 		template: mockDir + '/template.txt',
 		output: mockDir + '/dist',
-		format: 'hex',
 	})
 
 	const [main, moon, dawn] = ['', '-moon', '-dawn'].map((v) =>
 		readFile(`rose-pine${v}`, 'txt').trim()
 	)
 
-	t.is(main, 'Rosé Pine can also be pronounced #ebbcba #31748f')
-	t.is(moon, 'Rosé Pine Moon can also be pronounced #ea9a97 #3e8fb0')
-	t.is(dawn, 'Rosé Pine Dawn can also be pronounced #d7827e #286983')
+	t.is(main, 'Rosé Pine is our dark variant')
+	t.is(moon, 'Rosé Pine Moon is our not as dark variant')
+	t.is(dawn, 'Rosé Pine Dawn is our light variant')
 })
