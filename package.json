@@ -33,6 +33,7 @@
 	},
 	"dependencies": {
 		"@rose-pine/palette": "^3.0.1",
+		"chokidar": "^3.5.3",
 		"meow": "^10.1.2"
 	},
 	"devDependencies": {

@@ -29,8 +29,10 @@ $ npx @rose-pine/build --help
 		-p, --prefix        Variable prefix
 		-f, --format        Color output format
 		-s, --strip-spaces  Strip spaces in output
+		-w, --watch         Rebuild when template changes
 
 	Examples
+		$ npx @rose-pine/build -w
 		$ npx @rose-pine/build -s -f rgb
 		$ npx @rose-pine/build -t ./template.yml -o ./
 ```

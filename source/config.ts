@@ -26,6 +26,7 @@ export interface Config {
 		| 'hsl-array'
 		| 'hsl-function'
 	stripSpaces: boolean
+	watch: boolean
 }
 
 export type UserOptions = Partial<Config>
@@ -38,6 +39,7 @@ export const resolveConfig = (flags?: UserOptions) => {
 		prefix: '$',
 		format: 'hex',
 		stripSpaces: false,
+		watch: false,
 	}
 
 	return Object.assign(defaultConfig, flags)

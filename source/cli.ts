@@ -13,8 +13,10 @@ const cli = meow(
 		-p, --prefix        Variable prefix
 		-f, --format        Color output format
 		-s, --strip-spaces  Strip spaces in output
+		-w, --watch         Rebuild when template changes
 
 	Examples
+		$ build -w
 		$ build -s -f rgb
 		$ build -t ./template.yml -o ./
 	`,
@@ -40,6 +42,10 @@ const cli = meow(
 			},
 			stripSpaces: {
 				alias: 's',
+				type: 'boolean',
+			},
+			watch: {
+				alias: 'w',
 				type: 'boolean',
 			},
 		},
