@@ -16,7 +16,7 @@ export const build = async (flags?: UserOptions) => {
 
 	if (config.watch) {
 		console.log('👀 Waiting for changes...\n')
-		await watch(config.template)
+		await watch(config)
 	}
 }
 
