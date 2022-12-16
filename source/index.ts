@@ -11,7 +11,7 @@ export const build = async (flags?: UserOptions) => {
 
 	if (!config.__skipReadmeVersion) {
 		const version = getPackageVersion()
-		updateReadmeVersion(version)
+		updateReadmeVersion(version, flags)
 	}
 
 	if (config.watch) {
