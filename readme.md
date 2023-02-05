@@ -90,9 +90,36 @@ All values from [@rose-pine/palette](https://github.com/rose-pine/palette) are a
 **highlight{Low,Med,High}Alpha**\
 Highlight color with transparency, e.g. `#d4ccff36` or `rgba(212, 204, 255, 0.21)`
 
-## Custom values
+## Custom values per variant
 
-> Use a unique value per variant
+> Use different values for each variant. Format as `$(main|moon|dawn)`.
+
+### Named colors
+
+**template**
+
+```jsonc
+{
+	"accent": "$($rose|$iris|$pine)"
+}
+```
+
+**output**
+
+```jsonc
+{
+	// rose-pine.json
+	"accent": "#ebbcba"
+
+	// rose-pine-moon.json
+	"accent": "#c4a7e7"
+
+	// rose-pine-dawn.json
+	"accent": "#286983"
+}
+```
+
+### Strings
 
 **template**
 
