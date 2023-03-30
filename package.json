@@ -4,11 +4,8 @@
 	"description": "Theme generator for Rosé Pine",
 	"license": "MIT",
 	"repository": "rose-pine/build",
-	"funding": "https://github.com/sponsors/mvllow",
-	"author": {
-		"name": "mvllow",
-		"email": "mvllow@icloud.com"
-	},
+	"funding": "https://github.com/rose-pine/palette?sponsor=1",
+	"author": "Rosé Pine <hi@rosepinetheme.com>",
 	"type": "module",
 	"exports": "./dist/index.js",
 	"bin": "dist/cli.js",
