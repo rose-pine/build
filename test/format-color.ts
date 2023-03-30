@@ -3,9 +3,9 @@ import {formatColor} from '../source/utils/format-color.js'
 
 test('color formats', (t) => {
 	const testColor = {
-		hex: '#ebbcba',
-		rgb: 'rgb(235, 188, 186)',
-		hsl: 'hsl(2, 55%, 83%)',
+		hex: 'ebbcba',
+		rgb: [235, 188, 186],
+		hsl: [2, 55, 83],
 	}
 
 	t.is(formatColor(testColor, 'hex'), '#ebbcba')
@@ -32,9 +32,9 @@ test('color formats', (t) => {
 
 test('alpha color formats', (t) => {
 	const testColor = {
-		hex: '#6e6a8614',
-		rgb: 'rgba(110, 106, 134, 0.08)',
-		hsl: 'hsla(249, 12%, 47%, 0.08)',
+		hex: '6e6a8614',
+		rgb: [110, 106, 134, 0.08],
+		hsl: [249, 12, 47, 0.08],
 	}
 
 	t.is(formatColor(testColor, 'hex'), '#6e6a8614')

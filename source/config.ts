@@ -9,7 +9,7 @@ export type CustomValues = Record<
 	}
 >
 
-export interface Config {
+export type Config = {
 	__skipReadmeVersion: boolean
 	template: string
 	output: string

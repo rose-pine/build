@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import process from 'node:process'
-import {UserOptions} from '../config.js'
+import {type UserOptions} from '../config.js'
 
 export const updateReadmeVersion = (version: string, flags?: UserOptions) => {
 	const readme = fs
