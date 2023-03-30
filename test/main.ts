@@ -6,8 +6,8 @@ import build from '../source/index.js'
 
 const mockDir = process.cwd() + '/test/mock'
 
-const readFile = (file: string, ext: string) =>
-	fs.readFileSync(`${mockDir}/dist/${file}.${ext}`, 'utf8')
+const readFile = (filename: string) =>
+	fs.readFileSync(`${mockDir}/dist/${filename}`, 'utf8')
 
 test.after(() => {
 	try {
@@ -23,8 +23,7 @@ test('json template with hex values', async (t) => {
 	})
 
 	const [main, moon, dawn] = ['', '-moon', '-dawn'].map(
-		(v) =>
-			JSON.parse(readFile(`rose-pine${v}`, 'json')) as Record<string, string>
+		(v) => JSON.parse(readFile(`rose-pine${v}.json`)) as Record<string, string>
 	)
 
 	t.like(main, {
@@ -114,7 +113,7 @@ test('txt template with variant-unique values', async (t) => {
 	})
 
 	const [main, moon, dawn] = ['', '-moon', '-dawn'].map((v) =>
-		readFile(`rose-pine${v}`, 'txt').trim()
+		readFile(`rose-pine${v}.txt`).trim()
 	)
 
 	t.is(main, 'Rosé Pine is our dark variant')
