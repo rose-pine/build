@@ -6,39 +6,23 @@ export const formatColor = (
 	format: Config['format'] = 'hex',
 	stripSpaces: Config['stripSpaces'] = false
 ) => {
-	const workingColor = {...color}
+	const {hex, rgb, hsl} = {...color}
+	const [h, s, l] = hsl
+
+	const formattedRgb = rgb.join(', ')
+	const formattedHsl = `${h!}, ${s!}%, ${l!}%${hsl[3] ? `, ${hsl[3]}` : ''}`
 
 	const formats = {
-		hex: workingColor.hex,
-		'hex-ns': workingColor.hex.replace('#', ''),
-		rgb: workingColor.rgb
-			.replace('rgb(', '')
-			.replace('rgba(', '')
-			.replace(')', ''),
-		'rgb-ns': workingColor.rgb
-			.replace('rgb(', '')
-			.replace('rgba(', '')
-			.replace(')', '')
-			.replaceAll(',', ''),
-		'rgb-array': workingColor.rgb
-			.replace('rgb(', '[')
-			.replace('rgba(', '[')
-			.replace(')', ']'),
-		'rgb-function': workingColor.rgb,
-		hsl: workingColor.hsl
-			.replace('hsl(', '')
-			.replace('hsla(', '')
-			.replace(')', ''),
-		'hsl-ns': workingColor.hsl
-			.replace('hsl(', '')
-			.replace('hsla(', '')
-			.replace(')', '')
-			.replaceAll(',', ''),
-		'hsl-array': workingColor.hsl
-			.replace('hsl(', '[')
-			.replace('hsla(', '[')
-			.replace(')', ']'),
-		'hsl-function': workingColor.hsl,
+		hex: `#${hex}`,
+		'hex-ns': hex,
+		rgb: formattedRgb,
+		'rgb-ns': formattedRgb.replaceAll(',', ''),
+		'rgb-array': `[${formattedRgb}]`,
+		'rgb-function': `rgb${rgb[3] ? 'a' : ''}(${formattedRgb})`,
+		hsl: formattedHsl,
+		'hsl-ns': formattedHsl.replaceAll(',', ''),
+		'hsl-array': `[${formattedHsl}]`,
+		'hsl-function': `hsl${rgb[3] ? 'a' : ''}(${formattedHsl})`,
 	}
 
 	if (stripSpaces) return formats[format].replaceAll(' ', '')
