@@ -29,7 +29,7 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@rose-pine/palette": "4.0.1-0",
+		"@rose-pine/palette": "4.0.1",
 		"chokidar": "^3.5.3",
 		"meow": "^11.0.0"
 	},
