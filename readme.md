@@ -67,7 +67,7 @@ $ npx @rose-pine/build --help
 `[2, 55%, 83%]`
 
 **hsl-function**\
-`rgb(2, 55%, 83%)`
+`hsl(2, 55%, 83%)`
 
 ## Variables
 
