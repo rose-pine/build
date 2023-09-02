@@ -1,7 +1,6 @@
 {
 	"extends": "@mvllow/tsconfig",
 	"compilerOptions": {
-		"module": "esnext",
 		"outDir": "dist",
 		"lib": ["ES2021"]
 	},

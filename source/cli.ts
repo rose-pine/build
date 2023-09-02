@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import meow from 'meow'
-import build from './index.js'
+import meow from "meow";
+import build from "./index.js";
 
 const cli = meow(
 	`
@@ -25,32 +25,32 @@ const cli = meow(
 		importMeta: import.meta,
 		flags: {
 			template: {
-				alias: 't',
-				type: 'string',
+				shortFlag: "t",
+				type: "string",
 			},
 			output: {
-				alias: 'o',
-				type: 'string',
+				shortFlag: "o",
+				type: "string",
 			},
 			prefix: {
-				alias: 'p',
-				type: 'string',
+				shortFlag: "p",
+				type: "string",
 			},
 			format: {
-				alias: 'f',
-				type: 'string',
+				shortFlag: "f",
+				type: "string",
 			},
 			stripSpaces: {
-				alias: 's',
-				type: 'boolean',
+				shortFlag: "s",
+				type: "boolean",
 			},
 			watch: {
-				alias: 'w',
-				type: 'boolean',
+				shortFlag: "w",
+				type: "boolean",
 			},
 		},
-	}
-)
+	},
+);
 
 // @ts-expect-error We need to account for format
-await build(cli.flags)
+await build(cli.flags);

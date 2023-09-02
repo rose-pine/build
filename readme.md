@@ -37,109 +37,95 @@ $ npx @rose-pine/build --help
 		$ npx @rose-pine/build -t ./template.yml -o ./
 ```
 
-## Formats
+## Color formats
 
-**hex**\
-`#ebbcba`
-
-**hex-ns**\
-`ebbcba`
-
-**rgb**\
-`235, 188, 186`
-
-**rgb-ns**\
-`235 188 186`
-
-**rgb-array**\
-`[235, 188, 186]`
-
-**rgb-function**\
-`rgb(235, 188, 186)`
-
-**hsl**\
-`2, 55%, 83%`
-
-**hsl-ns**\
-`2 55% 83%`
-
-**hsl-array**\
-`[2, 55%, 83%]`
-
-**hsl-function**\
-`hsl(2, 55%, 83%)`
+| Name         | Example              |
+| ------------ | -------------------- |
+| hex          | `#ebbcba`            |
+| hex-ns       | `ebbcba`             |
+| rgb          | `235, 188, 186`      |
+| rgb-ns       | `235 188 186`        |
+| rgb-array    | `[235, 188, 186]`    |
+| rgb-function | `rgb(235, 188, 186)` |
+| hsl          | `2, 55%, 83%`        |
+| hsl-ns       | `2 55% 83%`          |
+| hsl-array    | `[2, 55%, 83%]`      |
+| hsl-function | `hsl(2, 55%, 83%)`   |
 
 ## Variables
 
 > By default, variables are prefixed with `$`
 
-All values from [@rose-pine/palette](https://github.com/rose-pine/palette) are available as well as the following:
+All values from [@rose-pine/palette](https://github.com/rose-pine/palette) are available as well as the following.
 
-**id**\
-`rose-pine | rose-pine-moon | rose-pine-dawn`
-
-**name**\
-`Rosé Pine | Rosé Pine Moon | Rosé Pine Dawn`
-
-**description**\
-`All natural pine, faux fur and a bit of soho vibes for the classy minimalist`
-
-**type**\
-`dark | dark | light`
-
-**highlight{Low,Med,High}Alpha**\
-Highlight color with transparency, e.g. `#d4ccff36` or `rgba(212, 204, 255, 0.21)`
-
-## Custom values per variant
-
-> Use different values for each variant. Format as `$(main|moon|dawn)`.
-
-### Named colors
-
-**template**
+### Metadata
 
 ```jsonc
+// template.json
 {
-	"accent": "$($rose|$iris|$pine)"
+	"id": "$id",
+	"name": "$name",
+	"description": "$description",
+	"type": "$type",
+}
+
+// rose-pine.json
+{
+	"id": "rose-pine",
+	"name": "Rosé Pine",
+	"description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+	"type": "dark",
+}
+
+// rose-pine-moon.json
+{
+	"id": "rose-pine-moon",
+	"name": "Rosé Pine Moon",
+	"description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+	"type": "dark",
+}
+
+// rose-pine-dawn.json
+{
+	"id": "rose-pine-dawn",
+	"name": "Rosé Pine Dawn",
+	"description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+	"type": "light",
 }
 ```
 
-**output**
+## Custom values per variant
+
+> Use different values for each variant, formatted as `$(main|moon|dawn)`
+
+### Named colors
 
 ```jsonc
-{
-	// rose-pine.json
-	"accent": "#ebbcba"
+// template.json
+{ "accent": "$($rose|$iris|$pine)" }
 
-	// rose-pine-moon.json
-	"accent": "#c4a7e7"
+// rose-pine.json
+{ "accent": "#ebbcba" }
 
-	// rose-pine-dawn.json
-	"accent": "#286983"
-}
+// rose-pine-moon.json
+{ "accent": "#c4a7e7" }
+
+// rose-pine-dawn.json
+{ "accent": "#286983" }
 ```
 
 ### Strings
 
-**template**
-
 ```jsonc
-{
-	"order": "$(Caffè|Cappuccino|Marocchino)"
-}
-```
+// template.json
+{ "order": "$(Caffè|Cappuccino|Marocchino)" }
 
-**output**
+// rose-pine.json
+{ "order": "Caffè" }
 
-```jsonc
-{
-	// rose-pine.json
-	"order": "Caffè"
+// rose-pine-moon.json
+{ "order": "Cappuccino" }
 
-	// rose-pine-moon.json
-	"order": "Cappuccino"
-
-	// rose-pine-dawn.json
-	"order": "Marocchino"
-}
+// rose-pine-dawn.json
+{ "order": "Marocchino" }
 ```

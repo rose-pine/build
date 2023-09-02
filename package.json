@@ -14,8 +14,8 @@
 	},
 	"scripts": {
 		"build": "del-cli dist && tsc && npm test",
-		"test": "del-cli test/mock/dist && xo && ava",
-		"release": "np",
+		"test": "del-cli test/mock/dist && ava",
+		"release": "npx np@latest",
 		"version": "npm run build"
 	},
 	"files": [
@@ -31,35 +31,14 @@
 	"dependencies": {
 		"@rose-pine/palette": "4.0.1",
 		"chokidar": "^3.5.3",
-		"meow": "^11.0.0"
+		"meow": "^12.1.1"
 	},
 	"devDependencies": {
 		"@mvllow/tsconfig": "^0.2.2",
-		"@types/node": "^18.15.11",
-		"ava": "^5.2.0",
-		"del-cli": "^5.0.0",
-		"np": "^7.7.0",
-		"prettier": "^2.8.7",
-		"ts-node": "^10.9.1",
-		"typescript": "^5.0.2",
-		"xo": "^0.53.1"
-	},
-	"prettier": {
-		"bracketSpacing": false,
-		"semi": false,
-		"singleQuote": true,
-		"trailingComma": "es5",
-		"useTabs": true
-	},
-	"xo": {
-		"prettier": true
-	},
-	"ava": {
-		"extensions": {
-			"ts": "module"
-		},
-		"nodeArguments": [
-			"--loader=ts-node/esm"
-		]
+		"@types/node": "^20.5.8",
+		"ava": "^5.3.1",
+		"del-cli": "^5.1.0",
+		"prettier": "^3.0.3",
+		"typescript": "^5.2.2"
 	}
 }

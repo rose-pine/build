@@ -1,36 +1,41 @@
-import fs from 'node:fs'
-import process from 'node:process'
-import {variantColors} from '@rose-pine/palette'
-import test from 'ava'
-import build from '../source/index.js'
+import fs from "node:fs";
+import process from "node:process";
+import { variantColors } from "@rose-pine/palette";
+import test from "ava";
+import build from "../dist/index.js";
 
-const mockDir = process.cwd() + '/test/mock'
+const mockDir = process.cwd() + "/test/mock";
 
-const readFile = (filename: string) =>
-	fs.readFileSync(`${mockDir}/dist/${filename}`, 'utf8')
+/**
+ * @param {string} filename
+ * @returns {string}
+ */
+function readFile(filename) {
+	return fs.readFileSync(`${mockDir}/dist/${filename}`, "utf8");
+}
 
 test.after(() => {
 	try {
-		fs.rmSync(mockDir + '/dist', {recursive: true})
+		fs.rmSync(mockDir + "/dist", { recursive: true });
 	} catch {}
-})
+});
 
-test('json template with hex values', async (t) => {
+test("json template with hex values", async (t) => {
 	await build({
 		__skipReadmeVersion: true,
-		template: mockDir + '/template.json',
-		output: mockDir + '/dist',
-	})
+		template: mockDir + "/template.json",
+		output: mockDir + "/dist",
+	});
 
-	const [main, moon, dawn] = ['', '-moon', '-dawn'].map(
-		(v) => JSON.parse(readFile(`rose-pine${v}.json`)) as Record<string, string>
-	)
+	const [main, moon, dawn] = ["", "-moon", "-dawn"].map((v) =>
+		JSON.parse(readFile(`rose-pine${v}.json`)),
+	);
 
 	t.like(main, {
-		id: 'rose-pine',
-		name: 'Rosé Pine',
+		id: "rose-pine",
+		name: "Rosé Pine",
 		description:
-			'All natural pine, faux fur and a bit of soho vibes for the classy minimalist',
+			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
 		colors: {
 			base: `#${variantColors.main.base.hex}`,
 			surface: `#${variantColors.main.surface.hex}`,
@@ -50,13 +55,13 @@ test('json template with hex values', async (t) => {
 			highlightHigh: `#${variantColors.main.highlightHigh.hex}`,
 			highlightHighAlpha: `#${variantColors.main.highlightHigh.alpha.hex}`,
 		},
-	})
+	});
 
 	t.like(moon, {
-		id: 'rose-pine-moon',
-		name: 'Rosé Pine Moon',
+		id: "rose-pine-moon",
+		name: "Rosé Pine Moon",
 		description:
-			'All natural pine, faux fur and a bit of soho vibes for the classy minimalist',
+			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
 		colors: {
 			base: `#${variantColors.moon.base.hex}`,
 			surface: `#${variantColors.moon.surface.hex}`,
@@ -76,13 +81,13 @@ test('json template with hex values', async (t) => {
 			highlightHigh: `#${variantColors.moon.highlightHigh.hex}`,
 			highlightHighAlpha: `#${variantColors.moon.highlightHigh.alpha.hex}`,
 		},
-	})
+	});
 
 	t.like(dawn, {
-		id: 'rose-pine-dawn',
-		name: 'Rosé Pine Dawn',
+		id: "rose-pine-dawn",
+		name: "Rosé Pine Dawn",
 		description:
-			'All natural pine, faux fur and a bit of soho vibes for the classy minimalist',
+			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
 		colors: {
 			base: `#${variantColors.dawn.base.hex}`,
 			surface: `#${variantColors.dawn.surface.hex}`,
@@ -102,21 +107,21 @@ test('json template with hex values', async (t) => {
 			highlightHigh: `#${variantColors.dawn.highlightHigh.hex}`,
 			highlightHighAlpha: `#${variantColors.dawn.highlightHigh.alpha.hex}`,
 		},
-	})
-})
+	});
+});
 
-test('txt template with variant-unique values', async (t) => {
+test("txt template with variant-unique values", async (t) => {
 	await build({
 		__skipReadmeVersion: true,
-		template: mockDir + '/template.txt',
-		output: mockDir + '/dist',
-	})
+		template: mockDir + "/template.txt",
+		output: mockDir + "/dist",
+	});
 
-	const [main, moon, dawn] = ['', '-moon', '-dawn'].map((v) =>
-		readFile(`rose-pine${v}.txt`).trim()
-	)
+	const [main, moon, dawn] = ["", "-moon", "-dawn"].map((v) =>
+		readFile(`rose-pine${v}.txt`).trim(),
+	);
 
-	t.is(main, 'Rosé Pine is our dark variant')
-	t.is(moon, 'Rosé Pine Moon is our not as dark variant')
-	t.is(dawn, 'Rosé Pine Dawn is our light variant')
-})
+	t.is(main, "Rosé Pine is our dark variant");
+	t.is(moon, "Rosé Pine Moon is our not as dark variant");
+	t.is(dawn, "Rosé Pine Dawn is our light variant");
+});
