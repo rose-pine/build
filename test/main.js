@@ -36,6 +36,7 @@ test("json template with hex values", async (t) => {
 		name: "Rosé Pine",
 		description:
 			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+		type: "dark",
 		colors: {
 			base: `#${variantColors.main.base.hex}`,
 			surface: `#${variantColors.main.surface.hex}`,
@@ -62,6 +63,7 @@ test("json template with hex values", async (t) => {
 		name: "Rosé Pine Moon",
 		description:
 			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+		type: "dark",
 		colors: {
 			base: `#${variantColors.moon.base.hex}`,
 			surface: `#${variantColors.moon.surface.hex}`,
@@ -88,6 +90,7 @@ test("json template with hex values", async (t) => {
 		name: "Rosé Pine Dawn",
 		description:
 			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+		type: "light",
 		colors: {
 			base: `#${variantColors.dawn.base.hex}`,
 			surface: `#${variantColors.dawn.surface.hex}`,
@@ -124,4 +127,41 @@ test("txt template with variant-unique values", async (t) => {
 	t.is(main, "Rosé Pine is our dark variant");
 	t.is(moon, "Rosé Pine Moon is our not as dark variant");
 	t.is(dawn, "Rosé Pine Dawn is our light variant");
+});
+
+test("template directory with multiple files", async (t) => {
+	await build({
+		__skipReadmeVersion: true,
+		template: mockDir + "/template",
+		output: mockDir + "/dist",
+	});
+
+	["main", "moon", "dawn"].forEach((variant) => {
+		const [json, txt] = ["json", "txt"].map((ext) =>
+			readFile(`${variant}/template.${ext}`).trim(),
+		);
+
+		const capitalizedVariant =
+			variant.charAt(0).toUpperCase() + variant.slice(1);
+
+		t.like(JSON.parse(json), {
+			id: `rose-pine${variant !== "main" ? `-${variant}` : ""}`,
+			name: "Rosé Pine" + (variant !== "main" ? ` ${capitalizedVariant}` : ""),
+			description:
+				"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+			type: variant === "dawn" ? "light" : "dark",
+		});
+
+		switch (variant) {
+			case "main":
+				t.is(txt, "Rosé Pine is our dark variant");
+				break;
+			case "moon":
+				t.is(txt, "Rosé Pine Moon is our not as dark variant");
+				break;
+			case "dawn":
+				t.is(txt, "Rosé Pine Dawn is our light variant");
+				break;
+		}
+	});
 });

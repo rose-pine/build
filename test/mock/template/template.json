@@ -1,0 +1,25 @@
+{
+	"id": "$id",
+	"name": "$name",
+	"description": "$description",
+	"type": "$type",
+	"colors": {
+		"base": "$base",
+		"surface": "$surface",
+		"overlay": "$overlay",
+		"muted": "$muted",
+		"subtle": "$subtle",
+		"love": "$love",
+		"gold": "$gold",
+		"rose": "$rose",
+		"pine": "$pine",
+		"foam": "$foam",
+		"iris": "$iris",
+		"highlightLow": "$highlightLow",
+		"highlightLowAlpha": "$highlightLowAlpha",
+		"highlightMed": "$highlightMed",
+		"highlightMedAlpha": "$highlightMedAlpha",
+		"highlightHigh": "$highlightHigh",
+		"highlightHighAlpha": "$highlightHighAlpha"
+	}
+}
