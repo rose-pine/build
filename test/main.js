@@ -36,6 +36,7 @@ test("json template with hex values", async (t) => {
 		name: "Rosé Pine",
 		description:
 			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+		type: "dark",
 		colors: {
 			base: `#${variantColors.main.base.hex}`,
 			surface: `#${variantColors.main.surface.hex}`,
@@ -62,6 +63,7 @@ test("json template with hex values", async (t) => {
 		name: "Rosé Pine Moon",
 		description:
 			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+		type: "dark",
 		colors: {
 			base: `#${variantColors.moon.base.hex}`,
 			surface: `#${variantColors.moon.surface.hex}`,
@@ -88,6 +90,7 @@ test("json template with hex values", async (t) => {
 		name: "Rosé Pine Dawn",
 		description:
 			"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+		type: "light",
 		colors: {
 			base: `#${variantColors.dawn.base.hex}`,
 			surface: `#${variantColors.dawn.surface.hex}`,
@@ -146,6 +149,7 @@ test("template directory with multiple files", async (t) => {
 			name: "Rosé Pine" + (variant !== "main" ? ` ${capitalizedVariant}` : ""),
 			description:
 				"All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+			type: variant === "dawn" ? "light" : "dark",
 		});
 
 		switch (variant) {

@@ -17,7 +17,7 @@ function generateVariant(
 ) {
 	const description =
 		"All natural pine, faux fur and a bit of soho vibes for the classy minimalist";
-	const type = variant.name === "dawn" ? "light" : "dark";
+	const type = variant.key === "dawn" ? "light" : "dark";
 
 	let result = template;
 
