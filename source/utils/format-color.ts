@@ -12,11 +12,17 @@ export const formatColor = (
 	const formattedRgb = rgb.join(", ");
 	const formattedHsl = `${h!}, ${s!}%, ${l!}%${hsl[3] ? `, ${hsl[3]}` : ""}`;
 
+	//ansi true-color strings cannot have spaces
+	if ( format == 'rgb-ansi' ) { 
+		stripSpaces = true
+	}
+
 	const formats = {
 		hex: `#${hex}`,
 		"hex-ns": hex,
 		rgb: formattedRgb,
 		"rgb-ns": formattedRgb.replaceAll(",", ""),
+		"rgb-ansi": formattedRgb.replaceAll(",", ";"),
 		"rgb-array": `[${formattedRgb}]`,
 		"rgb-function": `rgb${rgb[3] ? "a" : ""}(${formattedRgb})`,
 		hsl: formattedHsl,

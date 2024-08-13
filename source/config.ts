@@ -19,6 +19,7 @@ export type Config = {
 		| "hex-ns"
 		| "rgb"
 		| "rgb-ns"
+		| "rgb-ansi"
 		| "rgb-array"
 		| "rgb-function"
 		| "hsl"
