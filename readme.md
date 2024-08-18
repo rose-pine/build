@@ -45,6 +45,7 @@ $ npx @rose-pine/build --help
 | hex-ns       | `ebbcba`             |
 | rgb          | `235, 188, 186`      |
 | rgb-ns       | `235 188 186`        |
+| rgb-ansi     | `235;188;186`        |
 | rgb-array    | `[235, 188, 186]`    |
 | rgb-function | `rgb(235, 188, 186)` |
 | hsl          | `2, 55%, 83%`        |

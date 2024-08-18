@@ -14,10 +14,12 @@ test("color formats", (t) => {
 	t.is(formatColor(testColor, "hex-ns", true), "ebbcba");
 	t.is(formatColor(testColor, "rgb"), "235, 188, 186");
 	t.is(formatColor(testColor, "rgb-ns"), "235 188 186");
+	t.is(formatColor(testColor, "rgb-ansi"), "235;188;186");
 	t.is(formatColor(testColor, "rgb-array"), "[235, 188, 186]");
 	t.is(formatColor(testColor, "rgb-function"), "rgb(235, 188, 186)");
 	t.is(formatColor(testColor, "rgb", true), "235,188,186");
 	t.is(formatColor(testColor, "rgb-ns", true), "235188186");
+	t.is(formatColor(testColor, "rgb-ansi", true), "235;188;186");
 	t.is(formatColor(testColor, "rgb-array", true), "[235,188,186]");
 	t.is(formatColor(testColor, "rgb-function", true), "rgb(235,188,186)");
 	t.is(formatColor(testColor, "hsl"), "2, 55%, 83%");
@@ -43,10 +45,12 @@ test("alpha color formats", (t) => {
 	t.is(formatColor(testColor, "hex-ns", true), "6e6a8614");
 	t.is(formatColor(testColor, "rgb"), "110, 106, 134, 0.08");
 	t.is(formatColor(testColor, "rgb-ns"), "110 106 134 0.08");
+	t.is(formatColor(testColor, "rgb-ansi"), "110;106;134;0.08");
 	t.is(formatColor(testColor, "rgb-array"), "[110, 106, 134, 0.08]");
 	t.is(formatColor(testColor, "rgb-function"), "rgba(110, 106, 134, 0.08)");
 	t.is(formatColor(testColor, "rgb", true), "110,106,134,0.08");
 	t.is(formatColor(testColor, "rgb-ns", true), "1101061340.08");
+	t.is(formatColor(testColor, "rgb-ansi", true), "110;106;134;0.08");
 	t.is(formatColor(testColor, "rgb-array", true), "[110,106,134,0.08]");
 	t.is(formatColor(testColor, "rgb-function", true), "rgba(110,106,134,0.08)");
 	t.is(formatColor(testColor, "hsl"), "249, 12%, 47%, 0.08");
