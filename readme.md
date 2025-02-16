@@ -130,3 +130,7 @@ All values from [@rose-pine/palette](https://github.com/rose-pine/palette) are a
 // rose-pine-dawn.json
 { "order": "Marocchino" }
 ```
+
+## Related
+
+- [bloom](https://github.com/rose-pine/rose-pine-bloom) - Work-in-progress alternative build tool written in Go
