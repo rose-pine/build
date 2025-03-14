@@ -7,7 +7,15 @@ import { updateReadmeVersion } from "./utils/update-readme-version.js";
 export const build = async (flags?: UserOptions) => {
 	const config = resolveConfig(flags);
 
-	generateVariants(config);
+	if (config.accents) {
+		(["love", "gold", "rose", "pine", "foam", "iris"] as const).map(
+			(accent) => {
+				generateVariants(config, accent);
+			},
+		);
+	} else {
+		generateVariants(config);
+	}
 
 	if (!config.__skipReadmeVersion) {
 		const version = getPackageVersion();

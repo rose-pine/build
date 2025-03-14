@@ -14,6 +14,7 @@ function generateVariant(
 	template: string,
 	filename: string,
 	config: Config,
+	accent?: "love" | "gold" | "rose" | "pine" | "foam" | "iris",
 ) {
 	const description =
 		"All natural pine, faux fur and a bit of soho vibes for the classy minimalist";
@@ -51,11 +52,18 @@ function generateVariant(
 		`$${variantKeys.indexOf(variant.key as keyof typeof variants) + 1}`,
 	);
 
+	if (accent !== undefined) {
+		result = result.replaceAll(`${config.prefix}accent`, accent);
+	}
+
 	fs.mkdirSync(config.output, { recursive: true });
 	fs.writeFileSync(path.join(config.output, filename), result, "utf8");
 }
 
-export const generateVariants = (config: Config) => {
+export const generateVariants = (
+	config: Config,
+	accent?: "love" | "gold" | "rose" | "pine" | "foam" | "iris",
+) => {
 	const isDir = fs.lstatSync(config.template).isDirectory();
 	const extension = path.extname(config.template);
 
@@ -77,16 +85,22 @@ export const generateVariants = (config: Config) => {
 				generateVariant(
 					currentVariant,
 					template,
-					path.join(currentVariant.key, file),
+					accent
+						? path.join(`${currentVariant.key}-${accent}`, file)
+						: path.join(currentVariant.key, file),
 					config,
+					accent,
 				);
 			}
 		} else {
 			generateVariant(
 				currentVariant,
 				fs.readFileSync(config.template, "utf8").toString(),
-				currentVariant.id + extension,
+				accent
+					? `${currentVariant.id}-${accent}${extension}`
+					: currentVariant.id + extension,
 				config,
+				accent,
 			);
 		}
 	}

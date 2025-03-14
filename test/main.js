@@ -165,3 +165,18 @@ test("template directory with multiple files", async (t) => {
 		}
 	});
 });
+
+test("accents", async (t) => {
+	await build({
+		__skipReadmeVersion: true,
+		template: mockDir + "/template.md",
+		output: mockDir + "/dist",
+		accents: true,
+	});
+
+	const main_gold = readFile(`rose-pine-gold.md`);
+	const dawn_rose = readFile(`rose-pine-dawn-rose.md`);
+
+	t.is(main_gold, "The current accent is gold\n");
+	t.is(dawn_rose, "The current accent is rose\n");
+});

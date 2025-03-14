@@ -28,6 +28,7 @@ export type Config = {
 		| "hsl-function";
 	stripSpaces: boolean;
 	watch: boolean;
+	accents: boolean;
 };
 
 export type UserOptions = Partial<Config>;
@@ -41,6 +42,7 @@ export const resolveConfig = (flags?: UserOptions) => {
 		format: "hex",
 		stripSpaces: false,
 		watch: false,
+		accents: false,
 	};
 
 	return Object.assign(defaultConfig, flags);
