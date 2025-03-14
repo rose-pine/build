@@ -53,7 +53,14 @@ function generateVariant(
 	);
 
 	if (accent !== undefined) {
-		result = result.replaceAll(`${config.prefix}accent`, accent);
+		result = result.replaceAll(
+			`${config.prefix}accent`,
+			formatColor(
+				roleColors[accent][variant.key as keyof typeof variants],
+				config.format,
+				config.stripSpaces,
+			),
+		);
 	}
 
 	fs.mkdirSync(config.output, { recursive: true });

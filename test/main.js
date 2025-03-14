@@ -177,6 +177,6 @@ test("accents", async (t) => {
 	const main_gold = readFile(`rose-pine-gold.md`);
 	const dawn_rose = readFile(`rose-pine-dawn-rose.md`);
 
-	t.is(main_gold, "The current accent is gold\n");
-	t.is(dawn_rose, "The current accent is rose\n");
+	t.is(main_gold, "The current accent is #f6c177\n");
+	t.is(dawn_rose, "The current accent is #d7827e\n");
 });
