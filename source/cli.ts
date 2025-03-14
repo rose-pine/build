@@ -14,6 +14,7 @@ const cli = meow(
 		-f, --format        Color output format
 		-s, --strip-spaces  Strip spaces in output
 		-w, --watch         Rebuild when template changes
+		-a, --accents       Build accent variants
 
 	Examples
 		$ build -w
@@ -46,6 +47,10 @@ const cli = meow(
 			},
 			watch: {
 				shortFlag: "w",
+				type: "boolean",
+			},
+			accents: {
+				shortFlag: "a",
 				type: "boolean",
 			},
 		},
