@@ -56,7 +56,11 @@ function generateVariant(
 }
 
 export const generateVariants = (config: Config) => {
-	const isDir = fs.lstatSync(config.template).isDirectory();
+	if (!fs.existsSync(config.template)) {
+		console.error("🔍 Specified template does not exist:", config.template);
+		return;
+	}
+	const isDir = fs.existsSync(config.output) && fs.lstatSync(config.output).isDirectory();
 	const extension = path.extname(config.template);
 
 	for (const variant of variantKeys) {
